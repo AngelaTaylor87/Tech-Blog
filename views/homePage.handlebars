@@ -1,0 +1,22 @@
+{{#each posts as |Post| }}
+<div class="row mb-4 project">
+  <div class="col-md-5">
+    <h2>
+      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+      
+      <a href="/post/{{User.id}}">{{Post.name}}</a>
+    </h2>
+    <p>
+      <!-- Pass needed_funding value to the helper function -->
+      <span class="title">{{format_title Post.title}}</span>
+      {{Post.title}}
+    </p>
+    <p>Created by {{Post.user.name}} on {{format_date Post.date_created}}</p>
+  </div>
+  <div class="col-md-7">
+    <p>
+      {{Post.description}}
+    </p>
+  </div>
+</div>
+{{/each}}
