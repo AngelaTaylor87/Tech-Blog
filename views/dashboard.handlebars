@@ -1,0 +1,17 @@
+<h2 class="title pb-4">Your Dashboard</h2>
+<a href="/dasboard/newpost"><button id="create-post" class="btn mb-6 btn warning">Edit Post</button></a>
+<div class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <!-- Any other Bulma elements you want -->
+    {{#each posts as |post|}}
+
+{{> post-info post }}
+</div>
+
+{{else}}
+<h3 class="pb-4 has-text-centered">there are currently no posts</h3>
+{{/each}}
+  </div>
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
