@@ -16,7 +16,7 @@ Post.init(
             allowNull: false,
             defaultValue: "Title",
           },
-        contents: {
+        body: {
             type: DataTypes.STRING,
             allowNull: false,
           },
