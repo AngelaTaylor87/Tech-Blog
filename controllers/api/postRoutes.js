@@ -1,6 +1,15 @@
 const router = require('express').Router();
-const { Post,  } = require('../../models');
+const { Post, Comment, User  } = require('../../models');
+const withAuth = require('../../utils/auth');
 
+router.get('/', async (req, res) => {
+  try {
+    const postData = await Post.findAll({ include: [{ model: User}]});
+  res.json(postData)
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
 
 router.post('/', async (req, res) => {
   try {
@@ -15,7 +24,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
   try {
       const postData = await Post.update(
           {
