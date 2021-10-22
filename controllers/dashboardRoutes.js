@@ -7,20 +7,20 @@ router.get('/', async (req, res) => {
             where: {
                 user_id: req.session.user_id
             },
-            include: [
-                {
-                    model: User,
-                    attributes: ['name'],
-                },
-                {
-                    model: Comment,
-                    attributes: ['id', 'comment', 'post_id', 'user_id', 'created_at'],
-                    include: {
-                        model: User,
-                        attributes: ['name']
-                    }
-                },
-            ],
+            // include: [
+            //     {
+            //         model: User,
+            //         attributes: ['name'],
+            //     },
+            //     {
+            //         model: Comment,
+            //         attributes: ['id', 'comment', 'post_id', 'user_id', 'created_at'],
+            //         include: {
+            //             model: User,
+            //             attributes: ['name']
+            //         }
+            //     },
+            // ],
         });
     
 const posts = postData.map((post) => post.get({ plain: true }));
@@ -30,6 +30,7 @@ const posts = postData.map((post) => post.get({ plain: true }));
             logged_in: req.session.logged_in
         });
     } catch (err) {
+        console.log(err)
         res.status(500).json(err);
     }
 });
